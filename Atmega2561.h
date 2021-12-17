@@ -1,19 +1,18 @@
-/* EasyCODE V8 */
-/* EasyCODE ( 0 
-Atmega2561.h */
-/****************************
-*	Atmega2561.h			*
-*							*
-*	Name: L�thi				*
-*	Vorname: Samuel			*
-*	Kandidaten Nr.: 2549	*
-*							*
-*	Projekt:				*
-*							*
-*	Datum: 06.05.2021		*
-****************************/
-/* EasyCODE ( 0 
-general defines */
+/************************************************************************************
+*	Project:	LED_Controller    	__.-^^---....,,--_		    *
+*	Autor:		Samuel Lüthi	      _--*%ç&*ç&*%&*%&*&*bb--_		    *
+*	Datum:		16.12.2021	     <#ç``+@¬|( ´~¢|¬(%&¬|fegh>)	    *
+*				             |tradgrtgrt67584322423h6jp|	    *
+*					      \._ .;7gi&/&%hu89o99$8$_./	    *
+*						```--. . , ; .--'''		    *
+*						       | |   |			    *
+*					 	    .-=||  | |=-.		    *
+*						    `-=#$%&%$#=-'		    *
+*						       | ;  :|			    *
+*					      _____.,-#%&$@%#&#~,._____	   	    *
+************************************************************************************/
+
+
 /***analog comparator defines ***/
 #define ACSR_INIT   0x00    			//value for the AC-controlregister: ACD = true (deactivate analog comparator)
 
@@ -84,24 +83,10 @@ general defines */
 
 /***time-constant***/
 #define TIME_CNT_MS_RESET		0		 //reset value for the millisecond counter
-/* EasyCODE ) */
-/* EasyCODE ( 0 
-initialize flags */
-/* EasyCODE < */
-/*** System-Flags ***/
-struct SystemFlags
-{
-        unsigned Flag : 1;
-}
-f;
 
 
-/* EasyCODE > */
-/* EasyCODE ) */
-/* EasyCODE ( 0 
-initialize variables */
 /*** System Variablen ***/
-unsigned char i;							// Z�hlvariable f�r For-Schleifen
+unsigned char i;							// Zählvariable für For-Schleifen
 
 unsigned int uiMode;
 
@@ -121,21 +106,8 @@ int diff;
 unsigned int iADCLcash;
 unsigned int iADCHcash;
 
-/* EasyCODE ) */
-/* EasyCODE ( 0 
-define macros */
-
-/*** Makro f�r NOP ***/
-#define NoOperation asm("NOP");
-
-/* EasyCODE ) */
-/* EasyCODE ( 0 
-function prototypes */
-
 /***function prototypes***/
 void SystemInit( void );      							//initialize ports
 void LED_WRITE( unsigned int );							//write color to stripe
-void HSV_to_RGB(void);									//convert HSV to RGB
+void HSV_to_RGB(void);								//convert HSV to RGB
 
-/* EasyCODE ) */
-/* EasyCODE ) */
