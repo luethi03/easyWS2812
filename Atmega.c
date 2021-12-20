@@ -16,7 +16,6 @@
 /*** AVR-Includes ***/
 #define F_CPU 16000000
 #include <avr/io.h>
-#include <avr/interrupt.h> 
 #include <util/delay.h>
 #include <math.h>
 
@@ -28,8 +27,8 @@ int main (void)
 {
     SystemInit();																	//call System_Init
 	
-	iS = 100;
-	iV = 100;
+	iS = 100;																		//set saturation to 100 for initialization sequence
+	iV = 100;																		//set value to 100 for initialization sequence
 	
 	/*** Initializing sequence ***/
 	for (int i = 0; i <= 180; i++)
@@ -52,21 +51,86 @@ int main (void)
 	}
 	
     /***Loop o' infinity***/
-    while ( TRUE )
+    while ( TRUE )																	//endless loop
     {
-		/*** WRITE CODE HERE ***/
-		
-		char cPinD;
-		cPinD = PIND;
-		
-		switch (cPinD)
+		if (PIND & ON_OFF)															//if on of switch on 
+		{	
+			if (PIND & RGB_CYCLE)											
+			{
+				/*** Cycle Hue ***/
+				if (iH == 360)
+				{
+					iH = 0;
+				} 
+				else
+				{
+					iH ++;
+				}
+			}
+			else
+			{
+				//analog to HUE
+			}
+			
+			if (PIND & BREATHING)
+			{
+				/***Cycle Value ***/
+				if (iV == 100)
+				{
+					iH = 0;
+				}
+				else
+				{
+					iH ++;
+				}
+			}
+			else
+			{
+				//analog to Value
+			}
+			
+			HSV_to_RGB() // Calculate RGB value
+			
+			if (PIND & Circling)
+			{
+				/*** circling ***/
+				if (uiCircle == LEDs - 5)
+				{
+					uiCircle = 0;
+				}
+				else
+				{
+					uiCircle ++;
+				}
+				
+				uiR = 0;
+				uiG = 0;
+				uiB = 0;
+				LED_WRITE(uiCircle);
+				uiR = uiRn;
+				uiG = uiGn;
+				uiB = uiBn;
+				LED_WRITE(5);
+				uiR = 0;
+				uiG = 0;
+				uiB = 0;
+				LED_WRITE(LEDs - uiCircle);
+				uiR = uiRn;
+				uiG = uiGn;
+				uiB = uiBn;				
+			}
+		} 
+		else																				//when on off switch of
 		{
-		case 0b00000000 :
-			/***analog signal to rgb***/
-			break;
+			/*** set color to black ***/
+			iH = 0;																			
+			iS = 0;
+			iV = 0;
+			HSV_to_RGB();
 		}
 		
-		/*** decide when to send the data and call the function that sends it ***/
+		
+		/*** figure out when to send the data and call the function that sends it ***/
 		if((uiR != uiR) | (uiG != uiGn) | (uiB != uiBn))
 		{
 			uiR = uiRn;
