@@ -16,15 +16,6 @@
 /***analog comparator defines ***/
 #define ACSR_INIT   0x00    			//value for the AC-controlregister: ACD = true (deactivate analog comparator)
 
-/***define constants***/
-#define FALSE		0					//definevalue for FALSE.
-#define TRUE		1					//definevalue for TRUE.
-
-#define WHITE		1
-#define COLOR		2
-#define TWOOFF		3
-#define FOUROFF		4
-
 /*** portA-defines ***/
 #define PORTA_IO_CONFIG          0xFF   //IO-configuration: 0 = input / 1 = output
 #define PORTA_SIGNAL_CONFIG      0x00   //define default-logic level (if input: 1 = Pullup / 0 = Tri-state)
@@ -74,7 +65,6 @@
 /***interrupt-defines***/
 #define TIMER0_INTERRUPT_ENABLE  0x02  	 //Timer0-Interruptinitialisierung
 
-
 /***timer/counter0-defines***/
 #define T0_TCCR0A_INIT          0x02   	 //initialization value for the Timer0A-controlregister
 #define T0_TCCR0B_INIT          0x03     //initialization value for the Timer0B-controllregister
@@ -84,15 +74,29 @@
 /***time-constant***/
 #define TIME_CNT_MS_RESET		0		 //reset value for the millisecond counter
 
+/*** System defines ***/
+#define RGB_CYCLE				0x01
+#define	BREATHING				0x02
+#define Circling				0x04
+#define Reserve_0				0x08
+#define Reserve_1				0x10
+#define Reserve_2				0x20
+#define Music					0x40
+#define ON_OFF					0x80
+
+#define TRUE					1
+#define FALSE					0
+
+#define LEDs					200
+
 
 /*** System Variablen ***/
 unsigned char i;							// Zählvariable für For-Schleifen
 
-unsigned int uiMode;
-
 unsigned int uiR;
 unsigned int uiG;
 unsigned int uiB;
+
 unsigned int uiRn;
 unsigned int uiGn;
 unsigned int uiBn;
@@ -101,13 +105,13 @@ int iH;
 int iS;
 int iV;
 
-int diff;
-	
+unsigned int diff;
+unsigned int uiCircle;
+
 unsigned int iADCLcash;
 unsigned int iADCHcash;
 
 /***function prototypes***/
 void SystemInit( void );      							//initialize ports
 void LED_WRITE( unsigned int );							//write color to stripe
-void HSV_to_RGB(void);								//convert HSV to RGB
-
+void HSV_to_RGB(void);									//convert HSV to RGB
