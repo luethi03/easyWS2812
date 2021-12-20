@@ -1,0 +1,496 @@
+
+Atmega64.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000002c2  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000024e  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000004  00800100  00800100  000002c2  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  000002c2  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002f4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000078  00000000  00000000  00000330  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000b3f  00000000  00000000  000003a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000008a6  00000000  00000000  00000ee7  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000007f7  00000000  00000000  0000178d  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001bc  00000000  00000000  00001f84  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004fe  00000000  00000000  00002140  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000386  00000000  00000000  0000263e  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000068  00000000  00000000  000029c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	45 c0       	rjmp	.+138    	; 0x8c <__ctors_end>
+   2:	00 00       	nop
+   4:	5e c0       	rjmp	.+188    	; 0xc2 <__bad_interrupt>
+   6:	00 00       	nop
+   8:	5c c0       	rjmp	.+184    	; 0xc2 <__bad_interrupt>
+   a:	00 00       	nop
+   c:	5a c0       	rjmp	.+180    	; 0xc2 <__bad_interrupt>
+   e:	00 00       	nop
+  10:	58 c0       	rjmp	.+176    	; 0xc2 <__bad_interrupt>
+  12:	00 00       	nop
+  14:	56 c0       	rjmp	.+172    	; 0xc2 <__bad_interrupt>
+  16:	00 00       	nop
+  18:	54 c0       	rjmp	.+168    	; 0xc2 <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	52 c0       	rjmp	.+164    	; 0xc2 <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	50 c0       	rjmp	.+160    	; 0xc2 <__bad_interrupt>
+  22:	00 00       	nop
+  24:	4e c0       	rjmp	.+156    	; 0xc2 <__bad_interrupt>
+  26:	00 00       	nop
+  28:	4c c0       	rjmp	.+152    	; 0xc2 <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	4a c0       	rjmp	.+148    	; 0xc2 <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	48 c0       	rjmp	.+144    	; 0xc2 <__bad_interrupt>
+  32:	00 00       	nop
+  34:	46 c0       	rjmp	.+140    	; 0xc2 <__bad_interrupt>
+  36:	00 00       	nop
+  38:	44 c0       	rjmp	.+136    	; 0xc2 <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	c5 c0       	rjmp	.+394    	; 0x1c8 <__vector_15>
+  3e:	00 00       	nop
+  40:	40 c0       	rjmp	.+128    	; 0xc2 <__bad_interrupt>
+  42:	00 00       	nop
+  44:	3e c0       	rjmp	.+124    	; 0xc2 <__bad_interrupt>
+  46:	00 00       	nop
+  48:	3c c0       	rjmp	.+120    	; 0xc2 <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	3a c0       	rjmp	.+116    	; 0xc2 <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	38 c0       	rjmp	.+112    	; 0xc2 <__bad_interrupt>
+  52:	00 00       	nop
+  54:	36 c0       	rjmp	.+108    	; 0xc2 <__bad_interrupt>
+  56:	00 00       	nop
+  58:	34 c0       	rjmp	.+104    	; 0xc2 <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	32 c0       	rjmp	.+100    	; 0xc2 <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	30 c0       	rjmp	.+96     	; 0xc2 <__bad_interrupt>
+  62:	00 00       	nop
+  64:	2e c0       	rjmp	.+92     	; 0xc2 <__bad_interrupt>
+  66:	00 00       	nop
+  68:	2c c0       	rjmp	.+88     	; 0xc2 <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	2a c0       	rjmp	.+84     	; 0xc2 <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	28 c0       	rjmp	.+80     	; 0xc2 <__bad_interrupt>
+  72:	00 00       	nop
+  74:	26 c0       	rjmp	.+76     	; 0xc2 <__bad_interrupt>
+  76:	00 00       	nop
+  78:	24 c0       	rjmp	.+72     	; 0xc2 <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	22 c0       	rjmp	.+68     	; 0xc2 <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	20 c0       	rjmp	.+64     	; 0xc2 <__bad_interrupt>
+  82:	00 00       	nop
+  84:	1e c0       	rjmp	.+60     	; 0xc2 <__bad_interrupt>
+  86:	00 00       	nop
+  88:	1c c0       	rjmp	.+56     	; 0xc2 <__bad_interrupt>
+	...
+
+0000008c <__ctors_end>:
+  8c:	11 24       	eor	r1, r1
+  8e:	1f be       	out	0x3f, r1	; 63
+  90:	cf ef       	ldi	r28, 0xFF	; 255
+  92:	d0 e1       	ldi	r29, 0x10	; 16
+  94:	de bf       	out	0x3e, r29	; 62
+  96:	cd bf       	out	0x3d, r28	; 61
+
+00000098 <__do_copy_data>:
+  98:	11 e0       	ldi	r17, 0x01	; 1
+  9a:	a0 e0       	ldi	r26, 0x00	; 0
+  9c:	b1 e0       	ldi	r27, 0x01	; 1
+  9e:	ee e4       	ldi	r30, 0x4E	; 78
+  a0:	f2 e0       	ldi	r31, 0x02	; 2
+  a2:	02 c0       	rjmp	.+4      	; 0xa8 <__do_copy_data+0x10>
+  a4:	05 90       	lpm	r0, Z+
+  a6:	0d 92       	st	X+, r0
+  a8:	a0 30       	cpi	r26, 0x00	; 0
+  aa:	b1 07       	cpc	r27, r17
+  ac:	d9 f7       	brne	.-10     	; 0xa4 <__do_copy_data+0xc>
+
+000000ae <__do_clear_bss>:
+  ae:	21 e0       	ldi	r18, 0x01	; 1
+  b0:	a0 e0       	ldi	r26, 0x00	; 0
+  b2:	b1 e0       	ldi	r27, 0x01	; 1
+  b4:	01 c0       	rjmp	.+2      	; 0xb8 <.do_clear_bss_start>
+
+000000b6 <.do_clear_bss_loop>:
+  b6:	1d 92       	st	X+, r1
+
+000000b8 <.do_clear_bss_start>:
+  b8:	a4 30       	cpi	r26, 0x04	; 4
+  ba:	b2 07       	cpc	r27, r18
+  bc:	e1 f7       	brne	.-8      	; 0xb6 <.do_clear_bss_loop>
+  be:	02 d0       	rcall	.+4      	; 0xc4 <main>
+  c0:	c4 c0       	rjmp	.+392    	; 0x24a <_exit>
+
+000000c2 <__bad_interrupt>:
+  c2:	9e cf       	rjmp	.-196    	; 0x0 <__vectors>
+
+000000c4 <main>:
+
+/*** Projekt-Includes ***/
+#include "Atmega64.h"
+
+/*** MAIN ***/
+int main(void){
+  c4:	cf 93       	push	r28
+  c6:	df 93       	push	r29
+  c8:	00 d0       	rcall	.+0      	; 0xca <main+0x6>
+  ca:	cd b7       	in	r28, 0x3d	; 61
+  cc:	de b7       	in	r29, 0x3e	; 62
+    /* EasyCODE < */
+
+    /*** System initialisieren. ***/    
+    SystemInit();
+  ce:	26 d0       	rcall	.+76     	; 0x11c <SystemInit>
+
+    /*** Variablen initialisieren. ***/    
+    uiTimeCountMsDelay = TIME_CNT_MS_RESET;
+  d0:	10 92 01 01 	sts	0x0101, r1	; 0x800101 <__data_end+0x1>
+  d4:	10 92 00 01 	sts	0x0100, r1	; 0x800100 <__data_end>
+	unsigned int uiCnt = 0;
+  d8:	1a 82       	std	Y+2, r1	; 0x02
+    
+    /*** Interne Module initialisieren. ***/    
+    Timer0Init();
+  da:	19 82       	std	Y+1, r1	; 0x01
+    
+    /*** Interrupts freigeben. ***/   
+    InterruptInit();  
+  dc:	5f d0       	rcall	.+190    	; 0x19c <Timer0Init>
+  de:	50 d0       	rcall	.+160    	; 0x180 <InterruptInit>
+    /*** Externe Module initialisieren. ***/    
+	//PORTB = 0xFF;
+    /*** Main-Loop ***/
+    while(1)
+	{
+		uiCnt++;
+  e0:	89 81       	ldd	r24, Y+1	; 0x01
+  e2:	9a 81       	ldd	r25, Y+2	; 0x02
+  e4:	01 96       	adiw	r24, 0x01	; 1
+  e6:	9a 83       	std	Y+2, r25	; 0x02
+  e8:	89 83       	std	Y+1, r24	; 0x01
+		if(uiCnt == 50){
+  ea:	89 81       	ldd	r24, Y+1	; 0x01
+  ec:	9a 81       	ldd	r25, Y+2	; 0x02
+  ee:	c2 97       	sbiw	r24, 0x32	; 50
+  f0:	29 f4       	brne	.+10     	; 0xfc <main+0x38>
+			PORTB = 0xF0;
+  f2:	88 e3       	ldi	r24, 0x38	; 56
+  f4:	90 e0       	ldi	r25, 0x00	; 0
+  f6:	20 ef       	ldi	r18, 0xF0	; 240
+  f8:	fc 01       	movw	r30, r24
+  fa:	20 83       	st	Z, r18
+		}
+		if(uiCnt == 100){
+  fc:	89 81       	ldd	r24, Y+1	; 0x01
+  fe:	9a 81       	ldd	r25, Y+2	; 0x02
+ 100:	84 36       	cpi	r24, 0x64	; 100
+ 102:	91 05       	cpc	r25, r1
+ 104:	39 f4       	brne	.+14     	; 0x114 <main+0x50>
+			PORTB = 0x0F;
+ 106:	88 e3       	ldi	r24, 0x38	; 56
+ 108:	90 e0       	ldi	r25, 0x00	; 0
+ 10a:	2f e0       	ldi	r18, 0x0F	; 15
+ 10c:	fc 01       	movw	r30, r24
+ 10e:	20 83       	st	Z, r18
+			uiCnt = 0;
+ 110:	1a 82       	std	Y+2, r1	; 0x02
+		}
+		Timer0DelayMs(10);
+ 112:	19 82       	std	Y+1, r1	; 0x01
+ 114:	8a e0       	ldi	r24, 0x0A	; 10
+ 116:	90 e0       	ldi	r25, 0x00	; 0
+ 118:	7e d0       	rcall	.+252    	; 0x216 <Timer0DelayMs>
+	}
+ 11a:	e2 cf       	rjmp	.-60     	; 0xe0 <main+0x1c>
+
+0000011c <SystemInit>:
+                - Erstellung der Funktion.
+
+*******************************************************************************/
+
+void SystemInit(void)
+{
+ 11c:	cf 93       	push	r28
+ 11e:	df 93       	push	r29
+ 120:	cd b7       	in	r28, 0x3d	; 61
+ 122:	de b7       	in	r29, 0x3e	; 62
+    
+    /* EasyCODE < */
+    /*** Analog Comparator initialisieren. ***/
+        
+    ACSR = ACSR_INIT;                           // Comparator deaktivieren um Stromaufnahme zu reduzieren.
+ 124:	88 e2       	ldi	r24, 0x28	; 40
+ 126:	90 e0       	ldi	r25, 0x00	; 0
+ 128:	20 e8       	ldi	r18, 0x80	; 128
+ 12a:	fc 01       	movw	r30, r24
+ 12c:	20 83       	st	Z, r18
+        
+    /*** PortA initialisieren. ***/
+            
+    DDRA = PORTA_IO_CONFIG;                     // IO-Konfiguration setzen.
+ 12e:	8a e3       	ldi	r24, 0x3A	; 58
+ 130:	90 e0       	ldi	r25, 0x00	; 0
+ 132:	2f e0       	ldi	r18, 0x0F	; 15
+ 134:	fc 01       	movw	r30, r24
+ 136:	20 83       	st	Z, r18
+    PORTA = PORTA_SIGNAL_CONFIG;                // Anfangswerte und Pullup-Konfiguration setzen.
+ 138:	8b e3       	ldi	r24, 0x3B	; 59
+ 13a:	90 e0       	ldi	r25, 0x00	; 0
+ 13c:	20 ef       	ldi	r18, 0xF0	; 240
+ 13e:	fc 01       	movw	r30, r24
+ 140:	20 83       	st	Z, r18
+        
+    /*** PortB initialisieren. ***/
+            
+    DDRB = PORTB_IO_CONFIG;                     // IO-Konfiguration setzen.
+ 142:	87 e3       	ldi	r24, 0x37	; 55
+ 144:	90 e0       	ldi	r25, 0x00	; 0
+ 146:	2f ef       	ldi	r18, 0xFF	; 255
+ 148:	fc 01       	movw	r30, r24
+ 14a:	20 83       	st	Z, r18
+    PORTB = PORTB_SIGNAL_CONFIG;                // Anfangswerte und Pullup-Konfiguration setzen.
+ 14c:	88 e3       	ldi	r24, 0x38	; 56
+ 14e:	90 e0       	ldi	r25, 0x00	; 0
+ 150:	fc 01       	movw	r30, r24
+ 152:	10 82       	st	Z, r1
+                
+    /*** PortC initialisieren. ***/
+            
+    DDRC = PORTC_IO_CONFIG;                     // IO-Konfiguration setzen.
+ 154:	84 e3       	ldi	r24, 0x34	; 52
+ 156:	90 e0       	ldi	r25, 0x00	; 0
+ 158:	fc 01       	movw	r30, r24
+ 15a:	10 82       	st	Z, r1
+    PORTC = PORTC_SIGNAL_CONFIG;                // Anfangswerte und Pullup-Konfiguration setzen.
+ 15c:	85 e3       	ldi	r24, 0x35	; 53
+ 15e:	90 e0       	ldi	r25, 0x00	; 0
+ 160:	2f ef       	ldi	r18, 0xFF	; 255
+ 162:	fc 01       	movw	r30, r24
+ 164:	20 83       	st	Z, r18
+        
+    /*** PortD initialisieren. ***/
+            
+    DDRD = PORTD_IO_CONFIG;                     // IO-Konfiguration setzen.
+ 166:	81 e3       	ldi	r24, 0x31	; 49
+ 168:	90 e0       	ldi	r25, 0x00	; 0
+ 16a:	fc 01       	movw	r30, r24
+ 16c:	10 82       	st	Z, r1
+    PORTD = PORTD_SIGNAL_CONFIG;                // Anfangswerte und Pullup-Konfiguration setzen.
+ 16e:	82 e3       	ldi	r24, 0x32	; 50
+ 170:	90 e0       	ldi	r25, 0x00	; 0
+ 172:	2f ef       	ldi	r18, 0xFF	; 255
+ 174:	fc 01       	movw	r30, r24
+ 176:	20 83       	st	Z, r18
+        
+    /*** Funktion verlassen. ***/
+    /* EasyCODE > */
+    return ;
+ 178:	00 00       	nop
+}
+ 17a:	df 91       	pop	r29
+ 17c:	cf 91       	pop	r28
+ 17e:	08 95       	ret
+
+00000180 <InterruptInit>:
+                - Erstellung der Funktion.
+
+*******************************************************************************/
+
+void InterruptInit( void )
+{
+ 180:	cf 93       	push	r28
+ 182:	df 93       	push	r29
+ 184:	cd b7       	in	r28, 0x3d	; 61
+ 186:	de b7       	in	r29, 0x3e	; 62
+    /*** Timer Interrupts initialisieren ***/
+    
+    TIMSK = TIMER0_INTERRUPT_ENABLE;
+ 188:	87 e5       	ldi	r24, 0x57	; 87
+ 18a:	90 e0       	ldi	r25, 0x00	; 0
+ 18c:	22 e0       	ldi	r18, 0x02	; 2
+ 18e:	fc 01       	movw	r30, r24
+ 190:	20 83       	st	Z, r18
+    
+    /*** Globale Interrupts freigeben ***/
+    
+    sei();		//GlobalInterruptEnable;
+ 192:	78 94       	sei
+    
+    /*** Funktion verlassen. ***/
+    return ;
+ 194:	00 00       	nop
+}
+ 196:	df 91       	pop	r29
+ 198:	cf 91       	pop	r28
+ 19a:	08 95       	ret
+
+0000019c <Timer0Init>:
+                - Erstellung der Funktion.
+
+*******************************************************************************/
+
+void Timer0Init( void )
+{
+ 19c:	cf 93       	push	r28
+ 19e:	df 93       	push	r29
+ 1a0:	cd b7       	in	r28, 0x3d	; 61
+ 1a2:	de b7       	in	r29, 0x3e	; 62
+    
+    /*** Timer/Counter Kontrollregister setzen ***/
+    
+    TCCR0 = T0_TCCR0_INIT;
+ 1a4:	83 e5       	ldi	r24, 0x53	; 83
+ 1a6:	90 e0       	ldi	r25, 0x00	; 0
+ 1a8:	2b e0       	ldi	r18, 0x0B	; 11
+ 1aa:	fc 01       	movw	r30, r24
+ 1ac:	20 83       	st	Z, r18
+    
+    /*** Timer/Counter Zählerregister setzen ***/
+    
+    TCNT0 = T0_TCNT0_INIT;
+ 1ae:	82 e5       	ldi	r24, 0x52	; 82
+ 1b0:	90 e0       	ldi	r25, 0x00	; 0
+ 1b2:	fc 01       	movw	r30, r24
+ 1b4:	10 82       	st	Z, r1
+    
+    /*** Output Compare Register setzen ***/
+    
+    OCR0 = T0_OCR0_INIT;
+ 1b6:	81 e5       	ldi	r24, 0x51	; 81
+ 1b8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ba:	2e e7       	ldi	r18, 0x7E	; 126
+ 1bc:	fc 01       	movw	r30, r24
+ 1be:	20 83       	st	Z, r18
+    
+    /*** Funktion verlassen. ***/
+
+    return ;
+ 1c0:	00 00       	nop
+}
+ 1c2:	df 91       	pop	r29
+ 1c4:	cf 91       	pop	r28
+ 1c6:	08 95       	ret
+
+000001c8 <__vector_15>:
+                - Erstellung der Funktion.
+
+*******************************************************************************/
+
+ISR(TIMER0_COMP_vect)
+{    
+ 1c8:	1f 92       	push	r1
+ 1ca:	0f 92       	push	r0
+ 1cc:	00 90 5f 00 	lds	r0, 0x005F	; 0x80005f <__TEXT_REGION_LENGTH__+0x7e005f>
+ 1d0:	0f 92       	push	r0
+ 1d2:	11 24       	eor	r1, r1
+ 1d4:	8f 93       	push	r24
+ 1d6:	9f 93       	push	r25
+ 1d8:	cf 93       	push	r28
+ 1da:	df 93       	push	r29
+ 1dc:	cd b7       	in	r28, 0x3d	; 61
+ 1de:	de b7       	in	r29, 0x3e	; 62
+  	//SetBit(PORTB, LCD_ENABLE);
+	/*** Dekrementieren der Delayvariable. ***/
+    if ( uiTimeCountMsDelay != 0 )
+ 1e0:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_end>
+ 1e4:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__data_end+0x1>
+ 1e8:	89 2b       	or	r24, r25
+ 1ea:	51 f0       	breq	.+20     	; 0x200 <__vector_15+0x38>
+    {
+        /*** Delayvariable dekrementieren ***/
+        
+        uiTimeCountMsDelay--;
+ 1ec:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_end>
+ 1f0:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__data_end+0x1>
+ 1f4:	01 97       	sbiw	r24, 0x01	; 1
+ 1f6:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__data_end+0x1>
+ 1fa:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_end>
+    }
+	//ResetBit(PORTB, LCD_ENABLE);
+    
+    /*** Funktion verlassen. ***/
+  
+    return ;
+ 1fe:	00 00       	nop
+ 200:	00 00       	nop
+}
+ 202:	df 91       	pop	r29
+ 204:	cf 91       	pop	r28
+ 206:	9f 91       	pop	r25
+ 208:	8f 91       	pop	r24
+ 20a:	0f 90       	pop	r0
+ 20c:	00 92 5f 00 	sts	0x005F, r0	; 0x80005f <__TEXT_REGION_LENGTH__+0x7e005f>
+ 210:	0f 90       	pop	r0
+ 212:	1f 90       	pop	r1
+ 214:	18 95       	reti
+
+00000216 <Timer0DelayMs>:
+                - Erstellung der Funktion.
+
+*******************************************************************************/
+
+void Timer0DelayMs( unsigned int uiMs )
+{
+ 216:	cf 93       	push	r28
+ 218:	df 93       	push	r29
+ 21a:	00 d0       	rcall	.+0      	; 0x21c <Timer0DelayMs+0x6>
+ 21c:	cd b7       	in	r28, 0x3d	; 61
+ 21e:	de b7       	in	r29, 0x3e	; 62
+ 220:	9a 83       	std	Y+2, r25	; 0x02
+ 222:	89 83       	std	Y+1, r24	; 0x01
+    
+    /*** Anzahl Millisekunden übergeben ***/
+    
+    uiTimeCountMsDelay = uiMs;
+ 224:	89 81       	ldd	r24, Y+1	; 0x01
+ 226:	9a 81       	ldd	r25, Y+2	; 0x02
+ 228:	90 93 01 01 	sts	0x0101, r25	; 0x800101 <__data_end+0x1>
+ 22c:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_end>
+    
+    /*** Warten bis die Zeit abgelaufen ist ***/
+    /* EasyCODE > */
+    while ( uiTimeCountMsDelay > 0 )
+ 230:	00 00       	nop
+ 232:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_end>
+ 236:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__data_end+0x1>
+ 23a:	89 2b       	or	r24, r25
+ 23c:	d1 f7       	brne	.-12     	; 0x232 <Timer0DelayMs+0x1c>
+        // Warten...
+    }
+    
+    /*** Funktion verlassen. ***/
+   
+    return ;
+ 23e:	00 00       	nop
+}
+ 240:	0f 90       	pop	r0
+ 242:	0f 90       	pop	r0
+ 244:	df 91       	pop	r29
+ 246:	cf 91       	pop	r28
+ 248:	08 95       	ret
+
+0000024a <_exit>:
+ 24a:	f8 94       	cli
+
+0000024c <__stop_program>:
+ 24c:	ff cf       	rjmp	.-2      	; 0x24c <__stop_program>
