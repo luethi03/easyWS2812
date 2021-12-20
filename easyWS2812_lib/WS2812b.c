@@ -1,16 +1,18 @@
 /************************************************************************************
-*	Project:	LED_Controller_							 _.-^^---....,,--_			*
-*	Autor:		Samuel Lüthi						 _--*%ç&*ç&*%&*%&*&*bb--_		*
-*	Datum:		16.12.2021							<#ç``+@¬|( ´~¢|¬(%&¬|fegh>)		*
-*												    |tradgrtgrt67584322423h6jp|		*
-*													 \._ .;7gi&/&%hu89o99$8$_./		*
-*														```--. . , ; .--'''			*
-*															  | |   |				*
-*														   .-=||  | |=-.			*
-*														   `-=#$%&%$#=-'			*
-*															  | ;  :|				*
-*													 _____.,-#%&$@%#&#~,._____		*
+*	Project:	LED_Controller_		      _.-^^---....,,--_			*
+*	Autor:		Samuel LÃ¼thi		  _--*%Ã§J*Ã§&*%&*%&*&*bb--_		*
+*	Datum:		16.12.2021		 <#Ã§``+@Â¬|( Â´~Â¢|Â¬(%&Â¬|fegh>)		*
+*						 |tAadgrtgrt67584322423h6jp|		*
+*						  \._ .;7gi&/&%hu8No99$8$_./		*
+*					            ```--. . , ; .--'''			*
+*						          | I  |				*
+*						       .-=||  | |=-.			*
+*						       `-=#$N&%$#=-'			*
+*						  	  | ;  :|				*
+*						 _____.,-#%&$@%#A#~,._____		*
 ************************************************************************************/
+
+
 
 
 /*** AVR-Includes ***/
@@ -21,7 +23,7 @@
 #include "WS2812b.h"
 
 
-unsigned char HSV_to_RGB(unsigned int uiH, unsigned char ucS, unsigned char ucV, unsigned char ucDirectSend, unsigned int uiLEDs)
+uint32_t HSV_to_RGB(unsigned int uiH, unsigned char ucS, unsigned char ucV, unsigned char ucDirectSend, unsigned int uiLEDs)
 {
 	unsigned char ucRn;
 	unsigned char ucGn;
@@ -99,8 +101,9 @@ unsigned char HSV_to_RGB(unsigned int uiH, unsigned char ucS, unsigned char ucV,
 	}
 	else
 	{
-		unsigned long ulColor = ((ucRn << 16) | (ucGn << 8) | ucBn);
-		return ulColor;
+		uint32_t uiColor;
+		uiColor = ((ucRn  << 16) | (ucGn << 8) | ucBn);
+		return uiColor;
 	}
 	
 }
@@ -113,7 +116,7 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 	
 		if ( ucG & 0x80 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -121,19 +124,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 	
 		if ( ucG & 0x40 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -141,19 +144,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x20 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -161,19 +164,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x10 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 		   asm("nop;");
 		   asm("nop;");
 		   asm("nop;");
@@ -181,19 +184,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 		   asm("nop;");
 		   asm("nop;");
 		   asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x08 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -201,19 +204,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x04 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -221,19 +224,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x02 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -241,19 +244,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x01 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -261,19 +264,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( (ucR & 0x80) )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -281,19 +284,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucR & 0x40 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -301,19 +304,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucR & 0x20 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -321,19 +324,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucR & 0x10 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -341,19 +344,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucR& 0x08 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -361,19 +364,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucR & 0x04 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -381,19 +384,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucR& 0x02 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -401,19 +404,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucR & 0x01 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -421,19 +424,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x80 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -441,19 +444,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x40 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -461,19 +464,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x20 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -481,19 +484,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x10 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -501,19 +504,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x08 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -521,19 +524,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x04 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -541,19 +544,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x02 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -561,19 +564,19 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x01 )
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
@@ -581,15 +584,14 @@ void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsign
 			asm("nop;");
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 		else
 		{
-			PORTB = 0xFF;
+			OUTPORT = 0xFF;
 			asm("nop;");
 			asm("nop;");
-			PORTB = 0x00;
+			OUTPORT = 0x00;
 		}
 	}
 }
-
