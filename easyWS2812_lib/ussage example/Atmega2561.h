@@ -12,7 +12,6 @@
 *													 _____.,-#%&$@%#&#~,._____		*
 ************************************************************************************/
 
-
 /***analog comparator defines ***/
 #define ACSR_INIT   0x00    			//value for the AC-controlregister: ACD = true (deactivate analog comparator)
 
@@ -86,6 +85,8 @@ unsigned char i;							// Zählvariable für For-Schleifen
 
 unsigned int uiCircle;
 
+
+
 	
 unsigned int iADCLcash;
 unsigned int iADCHcash;
@@ -94,4 +95,3 @@ unsigned int iADCHcash;
 
 /***function prototypes***/
 void SystemInit( void );      							//initialize ports
-

@@ -14,46 +14,109 @@
 
 
 /*** AVR-Includes ***/
-#define F_CPU 16000000
+#define F_CPU 8000000
 #define OUTPORT PORTB
+#define EIGHT
 #include <avr/io.h>
 #include <util/delay.h>
+#include <stddef.h>
 
 /*** Projekt-Includes ***/
 #include "Atmega2561.h"
 #include "WS/WS2812b.c"
 
-int main (void)
+int __attribute__((optimize("O3"))) main (void)
 {
     SystemInit();																	//call System_Init
-	
+	unsigned char ucR;
+	unsigned char ucG;
+	unsigned char ucB;
+
 	
     /***Loop o' infinity***/
     while ( TRUE )																	//endless loop
     {
 		if (PIND & 0x01)
-		{
-			LED_WRITE(20, 0x05, 0x00, 0x00);
-			_delay_ms(100);
+		{			
+			LED_WRITE(20, 5, 0, 0);
 		}
 		
 		if (PIND & 0x02)
 		{
-			HSV_to_RGB(300, 100, 5, 1, 20);
-			_delay_ms(100);
+			HSV_to_RGB(300, 100, 10, 1, 20);
 		}
 		
 		if (PIND & 0x04)
 		{
 			uint32_t uiColor = HSV_to_RGB(180, 100, 5, 0, 0);
-			LED_WRITE(20, ((uiColor >> 16) & 0xFF), ((uiColor >> 8) & 0xFF), (uiColor & 0xFF));
-			_delay_ms(100);
+			
+			ucR = (uiColor >> 16) & 0xFF;
+			ucG = (uiColor >> 8) & 0xFF;
+			ucB = (uiColor & 0xFF);
+			LED_WRITE(20, ucR, ucG, ucB);
 		}
 		if (PIND & 0x08)
 		{
-			LED_WRITE(20, 0, 0, 0);
+			LED_WRITE(360, 0, 0, 0);
+			LED_WRITE(1, 0xFF, 0xFF, 0xFF);
+		}
+		
+		if (PIND & 0x10)
+		{
+			char cEaster[] = {1, 1, 0, 1, 2, 0, 1, 0, 1, 2, 0, 0, 0, 1, 0, 1, 0};
+			for (int i = 0; i < 16; i++)
+			{
+				if (cEaster[i] == 1)
+				{
+					LED_WRITE(1, 0, 1 , 0);
+				}
+				else if (cEaster[i] == 2)
+				{
+					LED_WRITE(1, 0, 0, 0);
+				}
+				else
+				{
+					LED_WRITE(1, 10 , 0, 0);
+				}
+			}
+		}
+		
+		if (PIND & 0x20)
+		{
+			_delay_ms(20);
+			unsigned int i = 0;
+			while (i != 360)
+			{
+				HSV_to_RGB(i, 100, 1, 1, 1);
+				i++;
+			}
 			_delay_ms(100);
 		}
+		
+		if (PIND & 0x40)
+		{
+			HSV_to_RGB(0, 100 , 5, 1, 5);
+			HSV_to_RGB(180, 100 , 5, 1, 5);
+			HSV_to_RGB(0, 100 , 5, 1, 5);
+			HSV_to_RGB(180, 100 , 5, 1, 5);
+			HSV_to_RGB(0, 100 , 5, 1, 5);
+			HSV_to_RGB(180, 100 , 5, 1, 5);
+			HSV_to_RGB(0, 100 , 5, 1, 5);
+			HSV_to_RGB(180, 100 , 5, 1, 5);
+			HSV_to_RGB(0, 100 , 5, 1, 5);
+			HSV_to_RGB(180, 100 , 5, 1, 5);
+			HSV_to_RGB(0, 100 , 5, 1, 5);
+			HSV_to_RGB(180, 100 , 5, 1, 5);
+			HSV_to_RGB(0, 100 , 5, 1, 5);
+			HSV_to_RGB(180, 100 , 5, 1, 5);
+			HSV_to_RGB(0, 100 , 5, 1, 5);
+			HSV_to_RGB(180, 100 , 5, 1, 5);
+			HSV_to_RGB(0, 100 , 5, 1, 5);
+			HSV_to_RGB(180, 100 , 5, 1, 5);
+			HSV_to_RGB(0, 100 , 5, 1, 5);
+			HSV_to_RGB(180, 100 , 5, 1, 5);
+		}
+		_delay_ms(50);
     }
 }
 
