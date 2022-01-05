@@ -12,9 +12,6 @@
 *						 _____.,-#%&$@%#A#~,._____		*
 ****************************************************************************************/
 
-
-
-
 /*** AVR-Includes ***/
 #include <avr/io.h>
 #include <math.h>
@@ -23,12 +20,14 @@
 #include "WS2812b.h"
 
 
-uint32_t HSV_to_RGB(unsigned int uiH, unsigned char ucS, unsigned char ucV, unsigned char ucDirectSend, unsigned int uiLEDs)
+
+uint32_t __attribute__((optimize("O3"))) HSV_to_RGB(unsigned int uiH, unsigned char ucS, unsigned char ucV, unsigned char ucDirectSend, unsigned int uiLEDs)
 {
 	unsigned char ucRn;
 	unsigned char ucGn;
 	unsigned char ucBn;
 	unsigned int diff;
+	
 	
 	if(uiH<61)
 	{
@@ -76,7 +75,7 @@ uint32_t HSV_to_RGB(unsigned int uiH, unsigned char ucS, unsigned char ucV, unsi
 	ucBn = ucBn + diff;
 	
 	
-	ucV = pow(ucV,1.0f/1.1f);
+	ucV = pow(ucV,0.9f);
 	
 	if (ucRn != 0)
 	{
@@ -93,11 +92,9 @@ uint32_t HSV_to_RGB(unsigned int uiH, unsigned char ucS, unsigned char ucV, unsi
 		ucBn = (ucBn * ucV)/100;
 	}
 	
-	
-	if (ucDirectSend  == 1)
+	if (ucDirectSend )
 	{
 		LED_WRITE(uiLEDs, ucRn, ucGn, ucBn);
-		return 0;
 	}
 	else
 	{
@@ -108,490 +105,375 @@ uint32_t HSV_to_RGB(unsigned int uiH, unsigned char ucS, unsigned char ucV, unsi
 	
 }
 
+
+
+#pragma GCC push_options
+#pragma GCC optimize ("O0")
+#pragma GCC optimize ( "-fdefer-pop,-fforward-propagate,-fomit-frame-pointer,-foptimize-sibling-calls,-finline-functions-called-once,-fipa-sra,-fmerge-constants,-fthread-jumps,-fcse-skip-blocks,-funsafe-loop-optimizations,-faggressive-loop-optimizations,-fif-conversion,-free,-fira-hoist-pressure,-fira-loop-pressure,-flra-remat,-fdelayed-branch,-fschedule-insns2,-fipa-ra")
 void LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsigned char ucB)
 {
-    /* EasyCODE < */
-    for ( int i = 0; i < uiLEDs; i ++ )
+	while (uiLEDs > 0)
 	{
-	
+		uiLEDs --;
 		if ( ucG & 0x80 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 	
 		if ( ucG & 0x40 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x20 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x10 )
 		{
 			OUTPORT = 0xFF;
-		   asm("nop;");
-		   asm("nop;");
-		   asm("nop;");
-		   asm("nop;");
-		   asm("nop;");
-		   asm("nop;");
-		   asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x08 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x04 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x02 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucG & 0x01 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( (ucR & 0x80) )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucR & 0x40 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucR & 0x20 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucR & 0x10 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucR& 0x08 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucR & 0x04 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucR& 0x02 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucR & 0x01 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x80 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x40 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x20 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x10 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x08 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x04 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x02 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 		
 		if ( ucB & 0x01 )
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
-			asm("nop;");
+			NOPON
+			NOPON
+			NOPON
 			OUTPORT = 0x00;
 		}
 		else
 		{
 			OUTPORT = 0xFF;
-			asm("nop;");
-			asm("nop;");
+			NOPOFF
 			OUTPORT = 0x00;
 		}
 	}
 }
+#pragma GCC pop_options
