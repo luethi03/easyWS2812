@@ -11,23 +11,37 @@
 *						  	  | ;  :|			*
 *						 _____.,-#%&$@%#A#~,._____		*
 ****************************************************************************************/
-#ifdef SIXTEEN
-
-	#define NOPON asm("nop\n\tnop\n\t");
-	#define NOPOFF asm("nop\n\t");
+#ifndef FREQ																								//
+	# error "CPU FREQUENCY (FREQ) IS NOT DEFINED LED_WRITE WON'T WORK!"
+	#define NOPON
+	#define NOPOFF
 #endif
 
-#ifdef EIGHT
-
-#define NOPON asm("nop\n\t");
-#define NOPOFF 
-
+#ifndef OUTPORT																								//
+	# error "OUTPUT PORT (OUTPORT) IS NOT DEFINED LED_WRITE WON'T WORK!"
+	#define OUTPORT _SFR_IO8(0x05)
 #endif
 
-/*** System Variablen ***/
-unsigned char i;							// Zählvariable für For-Schleifen
+#ifndef OUTPIN																								//
+	# error "OUTPUT PIN (OUTPIN) IS NOT DEFINED LED_WRITE WON'T WORK!"
+	#define OUTPIN 0x00
+#endif
+
+#if FREQ == 16																								//
+
+	#define NOPON	asm("nop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\t");
+	#define NOPOFF	asm("nop\n\t");
+	
+#endif
+
+#if FREQ == 8																								//
+
+	#define NOPON	asm("nop\n\t");
+	#define NOPOFF 
+	
+#endif
+
 
 /***function prototypes***/
-void LED_WRITE( unsigned int, unsigned char, unsigned char, unsigned char );							//write color to stripe
 uint32_t HSV_to_RGB(unsigned int, unsigned char, unsigned char, unsigned char, unsigned int );				//convert HSV to RGB
-
+void LED_WRITE( unsigned int, unsigned char, unsigned char, unsigned char );						//write color to stripe
