@@ -11,11 +11,6 @@
 *						  	  | ;  :|			*
 *						 _____.,-#%&$@%#A#~,._____		*
 ****************************************************************************************/
-#ifndef FREQ																								//
-	# error "CPU FREQUENCY (FREQ) IS NOT DEFINED LED_WRITE WON'T WORK!"
-	#define NOPON
-	#define NOPOFF
-#endif
 
 #ifndef OUTPORT																								//
 	# error "OUTPUT PORT (OUTPORT) IS NOT DEFINED LED_WRITE WON'T WORK!"
@@ -27,17 +22,19 @@
 	#define OUTPIN 0x00
 #endif
 
-#if FREQ == 16																								//
+#ifndef FREQ																								//
+	# error "CPU FREQUENCY (FREQ) IS NOT DEFINED LED_WRITE WON'T WORK!"
+	#define NOPON
+	#define NOPOFF
+#elif FREQ == 16	
 
 	#define NOPON	asm("nop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\t");
-	#define NOPOFF	asm("nop\n\t");
+	#define NOPOFF	asm("nop\n\tnop\n\t");
 	
-#endif
+#elif FREQ == 10																							//
 
-#if FREQ == 8																								//
-
-	#define NOPON	asm("nop\n\t");
-	#define NOPOFF 
+	#define NOPON	asm("nop\n\tnop\n\tnop\n\tnop\n\t");
+	#define NOPOFF	asm("nop\n\t");
 	
 #endif
 
