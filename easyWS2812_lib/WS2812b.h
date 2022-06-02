@@ -12,9 +12,12 @@
 *						 _____.,-#%&$@%#A#~,._____		*
 ****************************************************************************************/
 
+#ifndef _WS2812_H_
+#define _WS2812_H_
+
 #ifndef OUTPORT																								//
 	# error "OUTPUT PORT (OUTPORT) IS NOT DEFINED LED_WRITE WON'T WORK!"
-	#define OUTPORT _SFR_IO8(0x05)
+	#define OUTPORT _SFR_IO8(0x05)f
 #endif
 
 #ifndef OUTPIN																								//
@@ -38,6 +41,9 @@
 	
 #endif
 
+/*** AVR-Includes ***/
+#include <math.h>
+
 
 /***function prototypes***/
 
@@ -46,3 +52,5 @@ uint32_t HSV_to_RGB(unsigned int, unsigned char, unsigned char, unsigned char, u
 
 /*** write data to LED's ***/
 void LED_WRITE( unsigned int, unsigned char, unsigned char, unsigned char );	
+
+#endif
