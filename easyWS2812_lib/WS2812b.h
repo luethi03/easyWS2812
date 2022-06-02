@@ -40,5 +40,9 @@
 
 
 /***function prototypes***/
-uint32_t HSV_to_RGB(unsigned int, unsigned char, unsigned char, unsigned char, unsigned int );				//convert HSV to RGB
-void LED_WRITE( unsigned int, unsigned char, unsigned char, unsigned char );						//write color to stripe
+
+/*** color conversion from HSV to RGB ***/
+uint32_t HSV_to_RGB(unsigned int, unsigned char, unsigned char, unsigned char, unsigned int );
+
+/*** write data to LED's ***/
+void LED_WRITE( unsigned int, unsigned char, unsigned char, unsigned char );	
