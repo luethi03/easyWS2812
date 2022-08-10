@@ -109,7 +109,7 @@ uint32_t __attribute__((optimize("O3"))) HSV_to_RGB(unsigned int uiH, unsigned c
 void  __attribute__((optimize("O0"))) LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsigned char ucB)
 {
 	Start:
-	uiLEDs --;
+	//uiLEDs --;
 	
 	if ( ucG & 0x80 )
 	{
@@ -423,7 +423,7 @@ void  __attribute__((optimize("O0"))) LED_WRITE(unsigned int uiLEDs, unsigned ch
 		NOPOFF
 		OUTPORT = 0x00;
 	}
-	if (uiLEDs != 0)
+	if (--uiLEDs)
 	{
 		goto Start;
 	}
