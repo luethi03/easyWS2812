@@ -106,20 +106,19 @@ uint32_t __attribute__((optimize("O3"))) HSV_to_RGB(unsigned int uiH, unsigned c
 
 
 
-void  __attribute__((optimize("O0"))) LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsigned char ucB)
+void  __attribute__((optimize("O0"))) LED_WRITE(unsigned int uiLEDs, unsigned char ucR, unsigned char ucG, unsigned char ucB, ucOUTPIN)
 {
 	Start:
-	//uiLEDs --;
 	
 	if ( ucG & 0x80 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
@@ -127,302 +126,303 @@ void  __attribute__((optimize("O0"))) LED_WRITE(unsigned int uiLEDs, unsigned ch
 	
 	if ( ucG & 0x40 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucG & 0x20 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucG & 0x10 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucG & 0x08 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucG & 0x04 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucG & 0x02 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucG & 0x01 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( (ucR & 0x80) )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucR & 0x40 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucR & 0x20 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucR & 0x10 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucR& 0x08 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucR & 0x04 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucR& 0x02 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucR & 0x01 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucB & 0x80 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucB & 0x40 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucB & 0x20 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucB & 0x10 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucB & 0x08 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucB & 0x04 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucB & 0x02 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
 	
 	if ( ucB & 0x01 )
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPON
 		OUTPORT = 0x00;
 	}
 	else
 	{
-		OUTPORT = OUTPIN;
+		OUTPORT = ucOUTPIN;
 		NOPOFF
 		OUTPORT = 0x00;
 	}
+	
 	if (--uiLEDs)
 	{
 		goto Start;
