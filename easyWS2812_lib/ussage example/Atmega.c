@@ -17,7 +17,6 @@
 #define F_CPU 16000000
 #define OUTPORT PORTB
 #define OUTPIN 	0x01
-#define FREQ 	16
 
 #include <avr/io.h>
 #include <util/delay.h>
