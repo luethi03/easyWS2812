@@ -23,7 +23,7 @@
 #endif
 
 #ifndef F_CPU																								//
-	# error "CPU FREQUENCY (FREQ) IS NOT DEFINED LED_WRITE WON'T WORK!"
+	# error "CPU FREQUENCY (F_CPU) IS NOT DEFINED LED_WRITE WON'T WORK!"
 	#define NOPON
 	#define NOPOFF
 #elif F_CPU == 16000000
