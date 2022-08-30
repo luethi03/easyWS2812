@@ -22,16 +22,16 @@
 	#define OUTPIN 0x00
 #endif
 
-#ifndef FREQ																								//
+#ifndef F_CPU																								//
 	# error "CPU FREQUENCY (FREQ) IS NOT DEFINED LED_WRITE WON'T WORK!"
 	#define NOPON
 	#define NOPOFF
-#elif FREQ == 16	
+#elif F_CPU == 16	
 
 	#define NOPON	asm("nop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\t");
 	#define NOPOFF	asm("nop\n\tnop\n\t");
 	
-#elif FREQ == 10																							//
+#elif F_CPU == 10																							//
 
 	#define NOPON	asm("nop\n\tnop\n\tnop\n\tnop\n\t");
 	#define NOPOFF	asm("nop\n\t");
