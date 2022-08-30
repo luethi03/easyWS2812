@@ -26,12 +26,12 @@
 	# error "CPU FREQUENCY (FREQ) IS NOT DEFINED LED_WRITE WON'T WORK!"
 	#define NOPON
 	#define NOPOFF
-#elif F_CPU == 16	
+#elif F_CPU == 16000000
 
 	#define NOPON	asm("nop\n\tnop\n\tnop\n\tnop\n\tnop\n\tnop\n\t");
 	#define NOPOFF	asm("nop\n\tnop\n\t");
 	
-#elif F_CPU == 10																							//
+#elif F_CPU == 10000000																	//
 
 	#define NOPON	asm("nop\n\tnop\n\tnop\n\tnop\n\t");
 	#define NOPOFF	asm("nop\n\t");
